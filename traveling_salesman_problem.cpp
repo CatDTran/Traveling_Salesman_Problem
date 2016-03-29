@@ -42,7 +42,7 @@ int main()
 		printf("%d ", cities[i] );
 	}
 	cout << endl;
-	permute(cities, 0, cityCount - 1);
+	permute(cities, 0, cityCount);
 	return 0;
 }
 
@@ -54,22 +54,23 @@ void swap(int *x, int *y)
 	*x = *y;
 	*y = temp;
 }
-
+//=============PERMUTATION=============//
 void permute(int *a, int beginIndex, int endIndex)
 {
 	if(beginIndex == endIndex)
 	{
-		for(int i =0 ;i <= endIndex; i++)
-			printf("%d\n", a[i]);
+		for(int i = 0 ;i <= endIndex; i++)
+			printf("%d ", a[i]);
+		cout << endl;
 		return;
 	}
 	else
 	{
 		for(int i = beginIndex; i <= endIndex; i++)
 		{
-			swap((a + beginIndex), (a + endIndex));
+			swap((a + beginIndex), (a + i));
 			permute(a, beginIndex + 1, endIndex);
-			swap((a + beginIndex), (a + endIndex));
+			swap((a + beginIndex), (a + i));
 		}
 	}
 }
