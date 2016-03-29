@@ -6,27 +6,15 @@ UNIVERSITY OF NORTH TEXAS || CSCE 2110*/
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <stdlib.h>
+
 using namespace std;
 
-int main()
-{
-	
-	//declare and open input and output files
-	char inFileName[20];
-	// scanf("%s",inFileName);
-	// cout << inFileName << endl;
-	// char *outFileName;
-	// ifstream inFile;
-	// ofstream outFile;
-	//inFile.open(inFileName, ios::in);
-	//outFile.open(outFile, ios::out);
-	// if(!inFile.is_open())
-	// {
-	// 	cout << "No input file found..." << endl;
-	// 	return 0;
-	// }
+void swap(int *x, int *y);
+void permute(int *a, int beginIndex, int endIndex);
 
-	//At this state proper arguments and input file are entered
+int main()
+{	
 	int cityCount = 0, pathCount = 0;
 	int lineCount = 0;
 	string dummy;
@@ -34,18 +22,54 @@ int main()
 	while(getline(cin, dummy))
 	{
 		if(dummy[0] == 'c')
+		{
 			cityCount++;
+		}
 		else if(dummy[0] == 'a')
+		{
 			pathCount++;
-		lineCount++;
-		cout << lineCount << "|| cityCount: " << cityCount << "|| pathCount: " << pathCount << endl;
+			lineCount++;
+		}
 	}
-	//a string array to store lines
-	string lines[lineCount];
-	int i = 0;
-	while(getline(cin, lines[i]))
+	cout << "lineCount: " << lineCount << "|| cityCount: " << cityCount << "|| pathCount: " << pathCount << endl;
+
+	//
+	int *cities = (int *) malloc( cityCount * (sizeof(int)));
+
+	for(int i = 0; i < cityCount; i++)
 	{
-		
+		cities[i] = i + 1;
+		printf("%d ", cities[i] );
 	}
+	cout << endl;
+	permute(cities, 0, cityCount - 1);
 	return 0;
+}
+
+//==============SWAP===================//
+void swap(int *x, int *y)
+{
+	int temp;
+	temp = *x;
+	*x = *y;
+	*y = temp;
+}
+
+void permute(int *a, int beginIndex, int endIndex)
+{
+	if(beginIndex == endIndex)
+	{
+		for(int i =0 ;i <= endIndex; i++)
+			printf("%d\n", a[i]);
+		return;
+	}
+	else
+	{
+		for(int i = beginIndex; i <= endIndex; i++)
+		{
+			swap((a + beginIndex), (a + endIndex));
+			permute(a, beginIndex + 1, endIndex);
+			swap((a + beginIndex), (a + endIndex));
+		}
+	}
 }
