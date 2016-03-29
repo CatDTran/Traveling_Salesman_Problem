@@ -8,36 +8,30 @@ UNIVERSITY OF NORTH TEXAS || CSCE 2110*/
 #include <string>
 using namespace std;
 
-int main(int argc, char ** argv)
+int main()
 {
-	if(argc < 3)
-	{
-		cout << "Too few arguments..." << endl;
-		return 0;
-	}
-	else if(argc > 3)
-	{
-		cout << "Too many arguments..." << endl;
-		return 0;
-	}
-
+	
 	//declare and open input and output files
-	ifstream inFile;
-	ofstream outFile;
-	inFile.open(argv[1], ios::in);
-	outFile.open(argv[2], ios::out);
-	if(!inFile.is_open())
-	{
-		cout << "No input file found..." << endl;
-		return 0;
-	}
+	char inFileName[20];
+	// scanf("%s",inFileName);
+	// cout << inFileName << endl;
+	// char *outFileName;
+	// ifstream inFile;
+	// ofstream outFile;
+	//inFile.open(inFileName, ios::in);
+	//outFile.open(outFile, ios::out);
+	// if(!inFile.is_open())
+	// {
+	// 	cout << "No input file found..." << endl;
+	// 	return 0;
+	// }
 
 	//At this state proper arguments and input file are entered
 	int cityCount = 0, pathCount = 0;
 	int lineCount = 0;
 	string dummy;
 	//count number of lines, cities, and paths
-	while(getline(inFile, dummy))
+	while(getline(cin, dummy))
 	{
 		if(dummy[0] == 'c')
 			cityCount++;
@@ -49,7 +43,7 @@ int main(int argc, char ** argv)
 	//a string array to store lines
 	string lines[lineCount];
 	int i = 0;
-	while(getline(inFile, lines[i]))
+	while(getline(cin, lines[i]))
 	{
 		
 	}
