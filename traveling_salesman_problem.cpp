@@ -7,14 +7,15 @@ UNIVERSITY OF NORTH TEXAS || CSCE 2110*/
 #include <fstream>
 #include <string>
 #include <stdlib.h>
-
+#include <stddef.h>
+#define TABLE_SIZE 20
 using namespace std;
 
 void swap(int *x, int *y);
 void permute(int *a, int beginIndex, int endIndex);
 
 int permutationCount =0;
-int costTable[20][20];//2d array table contains weight of each edge
+int costTable[TABLE_SIZE][TABLE_SIZE];//2d array table contains weight of each edge
 int lowestCost;
 int *lowestPath;
 
@@ -24,6 +25,14 @@ int main()
 	int lineCount = 0;
 	string dummy;//dummy string will store each line that is read in
 
+	//initialize costTable to zero
+	for(int i = 0; i < TABLE_SIZE; i++)
+	{
+		for(int j = 0; j < TABLE_SIZE; j++)
+		{
+			costTable[i][j] = 0;
+		}
+	}
 	//count number of lines, cities, and paths
 	while(getline(cin, dummy))
 	{
@@ -38,13 +47,24 @@ int main()
 			//storing each arc cost in table
 			char *arcCost =  (char*) malloc(10 * sizeof(char));
 			dummy.copy(arcCost, 10, 6);
-			cout << (string) arcCost << endl;
-			costTable[dummy[2]][dummy[4]];
+			cout << dummy[2] << "->" << dummy[4] << " : " << (string) arcCost << endl;
+			int i = atoi(&dummy[2]), j = atoi(&dummy[4]);
+			costTable[i + 1][j + 1] = atoi(arcCost);
 		}
 	}
+	cout << costTable[2][3] << endl;
 	cout << "lineCount: " << lineCount << "|| cityCount: " << cityCount << "|| pathCount: " << pathCount << endl;
-
-	//
+	// for(int i = 0; i < TABLE_SIZE; i++)
+	// {
+	// 	printf("%.5d ", i);
+	// 	for(int j = 0; j < TABLE_SIZE; j++)
+	// 	{
+	// 		cout << j;
+	// 		printf(" %.5d", costTable[i][j]);
+	// 	}
+	// 	cout << endl;
+	// }
+	// //
 	int *cities = (int *) malloc( (cityCount + 1) * (sizeof(int)));
 
 	cout << "Cities: ";
@@ -55,7 +75,7 @@ int main()
 	}
 	cout << endl;
 	lowestPath = (int *) malloc((cityCount + 1) * sizeof(int));
-	permute(cities, 1, cityCount);
+	//permute(cities, 1, cityCount);
 	return 0;
 }
 
