@@ -49,10 +49,10 @@ int main()
 			dummy.copy(arcCost, 10, 6);
 			cout << dummy[2] << "->" << dummy[4] << " : " << (string) arcCost << endl;
 			int i = atoi(&dummy[2]), j = atoi(&dummy[4]);
-			costTable[i + 1][j + 1] = atoi(arcCost);
+			costTable[i][j] = atoi(arcCost);
 		}
 	}
-	cout << costTable[2][3] << endl;
+	cout << costTable[1][2] << endl;
 	cout << "lineCount: " << lineCount << "|| cityCount: " << cityCount << "|| pathCount: " << pathCount << endl;
 	// for(int i = 0; i < TABLE_SIZE; i++)
 	// {
