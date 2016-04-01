@@ -14,23 +14,32 @@ void swap(int *x, int *y);
 void permute(int *a, int beginIndex, int endIndex);
 
 int permutationCount =0;
+int costTable[20][20];//2d array table contains weight of each edge
+int lowestCost;
+int *lowestPath;
 
 int main()
 {	
 	int cityCount = 0, pathCount = 0;
 	int lineCount = 0;
-	string dummy;
+	string dummy;//dummy string will store each line that is read in
+
 	//count number of lines, cities, and paths
 	while(getline(cin, dummy))
 	{
-		if(dummy[0] == 'c')
+		if(dummy[0] == 'c')//if line contains city infomation
 		{
 			cityCount++;
 		}
-		else if(dummy[0] == 'a')
+		else if(dummy[0] == 'a')//if line contains edge information
 		{
 			pathCount++;
 			lineCount++;
+			//storing each arc cost in table
+			char *arcCost =  (char*) malloc(10 * sizeof(char));
+			dummy.copy(arcCost, 10, 6);
+			cout << (string) arcCost << endl;
+			costTable[dummy[2]][dummy[4]];
 		}
 	}
 	cout << "lineCount: " << lineCount << "|| cityCount: " << cityCount << "|| pathCount: " << pathCount << endl;
@@ -45,6 +54,7 @@ int main()
 		printf("%d ", cities[i] );
 	}
 	cout << endl;
+	lowestPath = (int *) malloc((cityCount + 1) * sizeof(int));
 	permute(cities, 1, cityCount);
 	return 0;
 }
@@ -80,3 +90,5 @@ void permute(int *a, int beginIndex, int endIndex)
 		}
 	}
 }
+
+//============COST===================//
