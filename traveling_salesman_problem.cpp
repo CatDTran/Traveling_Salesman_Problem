@@ -36,11 +36,12 @@ int main()
 	cout << "lineCount: " << lineCount << "|| cityCount: " << cityCount << "|| pathCount: " << pathCount << endl;
 
 	//
-	int *cities = (int *) malloc( cityCount * (sizeof(int)));
+	int *cities = (int *) malloc( (cityCount + 1) * (sizeof(int)));
 
-	for(int i = 0; i < cityCount; i++)
+	cout << "Cities: ";
+	for(int i = 0; i <= cityCount; i++)
 	{
-		cities[i] = i + 1;
+		cities[i +1] = i + 1;
 		printf("%d ", cities[i] );
 	}
 	cout << endl;
@@ -61,9 +62,9 @@ void permute(int *a, int beginIndex, int endIndex)
 {
 	if(beginIndex == endIndex)
 	{
-		for(int i = 0 ;i < endIndex; i++)
+		for(int i = 1 ;i <= endIndex; i++)
 		{
-			printf("%d ", a[i+1]);			
+			printf("%d ", a[i]);			
 		}
 		permutationCount++;
 		printf("Permutation counts: %d", permutationCount);
