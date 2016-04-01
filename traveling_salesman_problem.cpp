@@ -13,6 +13,8 @@ using namespace std;
 void swap(int *x, int *y);
 void permute(int *a, int beginIndex, int endIndex);
 
+int permutationCount =0;
+
 int main()
 {	
 	int cityCount = 0, pathCount = 0;
@@ -42,7 +44,7 @@ int main()
 		printf("%d ", cities[i] );
 	}
 	cout << endl;
-	permute(cities, 0, cityCount);
+	permute(cities, 1, cityCount);
 	return 0;
 }
 
@@ -59,10 +61,13 @@ void permute(int *a, int beginIndex, int endIndex)
 {
 	if(beginIndex == endIndex)
 	{
-		for(int i = 0 ;i <= endIndex; i++)
-			printf("%d ", a[i]);
+		for(int i = 0 ;i < endIndex; i++)
+		{
+			printf("%d ", a[i+1]);			
+		}
+		permutationCount++;
+		printf("Permutation counts: %d", permutationCount);
 		cout << endl;
-		return;
 	}
 	else
 	{
