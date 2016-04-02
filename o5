@@ -1,0 +1,11 @@
+The tour: 1 2 3 4 5 1 cost 10500
+The tour: 1 5 4 3 2 1 cost 10500
+The tour: 2 1 5 4 3 2 cost 10500
+The tour: 2 3 4 5 1 2 cost 10500
+The tour: 3 2 1 5 4 3 cost 10500
+The tour: 3 4 5 1 2 3 cost 10500
+The tour: 4 3 2 1 5 4 cost 10500
+The tour: 4 5 1 2 3 4 cost 10500
+The tour: 5 4 3 2 1 5 cost 10500
+The tour: 5 1 2 3 4 5 cost 10500
+The tour: 5 1 2 3 4 5 cost 10500
